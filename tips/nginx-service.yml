@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx  # This means target a deployment with this label on the deployment metadata
+  ports:
+    - protocol: TCP
+      port: 80  # port to access this service on
+      targetPort: 8080  # port to forward this request to (Ideally should be the containerPort of a running pod)
+    

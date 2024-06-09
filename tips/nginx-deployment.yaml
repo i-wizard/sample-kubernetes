@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-deployment
+  labels:
+    app: nginx  # could be used by a service to target this deployment
+# deployment specifications
+spec: 
+  replicas: 1
+  selector:
+    matchLabels: # target pods that have these labels
+      app: nginx
+  template:
+    metadata: 
+      labels:
+        app: nginx
+    # Pod specifications
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 8080
